@@ -31,16 +31,16 @@ export default function VolunteerExperienceItem({
     >
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.34em] text-[var(--muted)]">
+          <p className="text-xs uppercase tracking-[0.34em] text-(--muted)">
             {period}
           </p>
           <h4 className="text-xl font-semibold text-white">{role}</h4>
-          <p className="text-sm text-[var(--muted)]">{organization}</p>
+          <p className="text-sm text-(--muted)">{organization}</p>
         </div>
-        <p className="text-sm text-[var(--muted)] md:text-right">{location}</p>
+        <p className="text-sm text-(--muted) md:text-right">{location}</p>
       </div>
 
-      <div className="mt-6 space-y-3 text-sm leading-7 text-[var(--muted-2)]">
+      <div className="mt-6 space-y-3 text-sm leading-7 text-(--muted-2)">
         {details.map((detail) => (
           <p key={detail}>{detail}</p>
         ))}
