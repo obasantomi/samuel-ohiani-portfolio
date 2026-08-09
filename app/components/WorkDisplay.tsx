@@ -174,12 +174,17 @@ export default function WorkDisplay() {
                       </p>
                     </div>
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex flex-wrap items-center gap-2 text-lg font-semibold text-foreground">
+                      <a
+                        href={experience.url}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex group flex-wrap items-center gap-2 text-lg font-semibold text-foreground"
+                      >
                         <span>{experience.company}</span>
-                        {experience.url ? (
-                          <span className="text-(--muted)">↗</span>
-                        ) : null}
-                      </div>
+
+                        <span className="text-(--muted) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transform transition-all duration-300">
+                          ↗
+                        </span>
+                      </a>
                       <p className="text-sm text-(--muted-2)">
                         {experience.location}
                       </p>
