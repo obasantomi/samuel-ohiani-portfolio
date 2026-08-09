@@ -68,7 +68,7 @@ const Footer = () => {
             </em>
           </motion.h2>
           <motion.a
-            href="ohianisammy2005@gmail.com"
+            href="mailto:ohianisammy2005@gmail.com"
             className="no-underline border-b mt-5 tracking-widest text-[#8A8880] text-2xl border-[#333] pb-px transition-colors duration-200 hover:text-[#0A0A0A]"
             variants={itemVariants}
           >
@@ -98,7 +98,7 @@ const Footer = () => {
               LinkedIn
             </motion.a>
             <motion.a
-              href="ohianisammy2005@gmail.com"
+              href="mailto:ohianisammy2005@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#8A8880] hover:text-[#0A0A0A]"
