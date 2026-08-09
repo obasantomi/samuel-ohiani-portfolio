@@ -176,6 +176,8 @@ export default function WorkDisplay() {
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <a
                         href={experience.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="flex group flex-wrap items-center gap-2 text-lg font-semibold text-foreground"
                       >
