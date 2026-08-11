@@ -183,7 +183,7 @@ export default function Hero() {
                   // ignore clipboard errors silently
                 }
               }}
-              className="inline-flex items-center max-w-50 gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
+              className="inline-flex items-center  w-fit gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -205,7 +205,7 @@ export default function Hero() {
               href="/resume/Samuel-Ohiani-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center max-w-37 gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
+              className="inline-flex items-center w-fit gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
