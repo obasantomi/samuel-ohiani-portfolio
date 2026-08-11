@@ -11,13 +11,14 @@ const experiences = [
     location: "Lagos, Nigeria",
     period: "December 2025 — Present",
     achievements: [
-      "Led cross-service error-contract standardization, eliminating fragmented error semantics and improving service-to-service reliability.",
-      "Increased resilience of card gateway integrations by improving timeout, retry, and dependency-failure handling, which reduced failed transactions during third-party instability.",
-      "Built and refined end-to-end card payment flows, from transaction initiation and gateway authorization to callback/webhook processing and final status updates.",
-      "Collaborated closely with product and QA to convert payment business rules into robust backend validations, improving feature quality and delivery predictability.",
+      "Design and maintain the backend infrastructure powering a card acquiring platform, integrating global payment providers including Fiserv, Worldpay, Nuvei, Elavon, and PayPal, alongside Apple Pay.",
+      "Built end-to-end payment flows covering payment initiation, 3DS authentication, payment session management, redirect handling, and transaction lifecycle processing for secure, scalable operations.",
+      "Implemented provider-specific onboarding, redirect, and payment processing workflows for card and digital wallet transactions, ensuring compatibility with each gateway's integration model.",
+      "Designed reusable payment abstractions and shared acquiring patterns to unify multiple providers behind a consistent backend architecture while supporting complex business rules and provider variability.",
+      "Improved reliability across gateway integrations by tightening timeout, retry, and dependency-failure handling, while standardizing cross-service error contracts and operational semantics.",
     ],
     keyImpact:
-      "Improved reliability across card payment infrastructure by strengthening gateway failure handling, standardizing service error contracts, and refining end-to-end payment flows.",
+      "Strengthened the platform's payment infrastructure by unifying provider integrations, hardening core transaction flows, and improving reliability, security, and scalability across card and wallet acquiring operations.",
     url: "https://www.resilience17.com/",
   },
   {

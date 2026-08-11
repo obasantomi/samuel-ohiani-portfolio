@@ -12,7 +12,7 @@ const projects = [
       "Web-based application connecting users to campus food vendors. Users can browse menus, place orders, rate vendors, and track deliveries.",
     technologies: "Node.js · Express · Sequelize · PostgreSQL · Paystack",
     date: "March 2024",
-    href: "https://github.com/samohiani", // TODO: Replace with the actual HebronBites project URL.
+    // href: "https://github.com/samohiani", // TODO: Replace with the actual HebronBites project URL.
   },
   {
     number: "02",
@@ -21,7 +21,7 @@ const projects = [
       "A school ride-hailing mobile application designed to connect users with reliable drivers for safe and convenient trips to and from their various schools.",
     technologies: "Node.js · Express · Sequelize · PostgreSQL",
     date: "July 2024",
-    href: "https://www.bugatravels.com/", // TODO: Replace with the actual Buga Travels project URL.
+    // href: "https://www.bugatravels.com/", // TODO: Replace with the actual Buga Travels project URL.
   },
   {
     number: "03",

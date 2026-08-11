@@ -65,7 +65,7 @@ export default function AnimatedWorkDisplay() {
   }, [isMobile]);
 
   return (
-    <div className=" w-full md:max-w-100 mx-auto md:mx-0 relative h-100 rounded-4xl overflow-hidden">
+    <div className="pl-10 md:pl-15 w-full md:max-w-100 mx-auto md:mx-0 relative h-100 rounded-4xl overflow-hidden">
       <img
         src="/images/samuel.JPG"
         alt="Samuel portrait"

@@ -9,7 +9,7 @@ interface ProjectCardProps {
   description?: string;
   technologies?: string;
   date?: string;
-  href: string;
+  href?: string;
 }
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -114,17 +114,19 @@ export default function ProjectCard({
               ) : (
                 <div />
               )}
-              <motion.a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-(--muted) transition-colors duration-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
-                whileHover={prefersReducedMotion ? undefined : { x: 4 }}
-                transition={{ duration: 0.25, ease: easeOut }}
-              >
-                <span>Visit</span>
-                <span aria-hidden>↗</span>
-              </motion.a>
+              {href && (
+                <motion.a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-(--muted) transition-colors duration-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                  whileHover={prefersReducedMotion ? undefined : { x: 4 }}
+                  transition={{ duration: 0.25, ease: easeOut }}
+                >
+                  <span>Visit</span>
+                  <span aria-hidden>↗</span>
+                </motion.a>
+              )}
             </div>
           </div>
         ) : (
