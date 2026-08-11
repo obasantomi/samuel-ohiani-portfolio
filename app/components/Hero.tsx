@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import AnimatedBuildingStatement from "./AnimatedBuildingStatement";
+import AnimatedWorkDisplay from "./AnimatedWorkDisplay";
+import TechMarquee from "./TechMarquee";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -57,7 +59,7 @@ export default function Hero() {
             aria-hidden
           >
             <motion.span
-              className="w-3 h-3 rounded-full bg-[#22c55e] border border-white/10"
+              className="w-3 h-3 rounded-full bg-[#9bef8f] border border-white/10"
               animate={{
                 scale: [1, 1.18, 1],
                 boxShadow: [
@@ -72,7 +74,7 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
             />
-            <span>AVAILABLE FOR WORK</span>
+            <span className="ml-2">AVAILABLE FOR WORK</span>
           </motion.div>
           <h1
             className="font-display text-base sm:text-lg md:text-2xl"
@@ -159,15 +161,15 @@ export default function Hero() {
       </div>
 
       <motion.section
-        className="w-full flex flex-col md:flex-row-reverse  mx-auto mt-30 gap-20"
+        className="w-full flex flex-col items-center  md:flex-row md:justify-between mx-auto mt-30 gap-20"
         variants={fadeUpVariants}
       >
-        <div className="flex flex-col justify-between gap-6 w-full">
-          <div className="max-w-135">
+        <div className="flex flex-col max-w-95  md:justify-between gap-10 w-full">
+          <div className="">
             <AnimatedBuildingStatement />
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex md:flex-col gap-3">
             <motion.button
               type="button"
               onClick={async () => {
@@ -181,7 +183,7 @@ export default function Hero() {
                   // ignore clipboard errors silently
                 }
               }}
-              className="inline-flex items-center gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
+              className="inline-flex items-center max-w-50 gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -203,7 +205,7 @@ export default function Hero() {
               href="/resume/Samuel-Ohiani-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
+              className="inline-flex items-center max-w-37 gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -223,101 +225,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <motion.div
-          className="space-y-8 text-md text-white/50"
-          variants={sectionStaggerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.p variants={fadeUpVariants}>
-            I'm Samuel, a Fullstack Engineer with 3+ years of experience
-            building products from idea to production. While my expertise is in
-            backend engineering, I enjoy working across the stack to create
-            fast, reliable, and user-focused applications.
-          </motion.p>
-          <motion.div variants={fadeUpVariants}>
-            Currently, I work on the backend infrastructure powering a card
-            acquiring platform, integrating global payment providers and
-            delivering secure, scalable payment flows for merchants worldwide at
-            <Link
-              href={"https://www.resilience17.com/"}
-              target="_blank"
-              className="inline-flex relative items-center gap-1 group mx-1 transition-all duration-400 font-bold"
-            >
-              <span className="absolute left-0 opacity-0 p-0.5 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
-                <img
-                  src="/images/work/resilience.jpeg"
-                  alt="Resilience Logo"
-                  className="h-5 object-cover"
-                />
-              </span>
-              <span className="group-hover:translate-x-6 transform text-white/80 transition-transform duration-300 group-hover:text-[#8ae051]">
-                Resilience
-              </span>
-            </Link>
-          </motion.div>
-
-          <motion.div variants={fadeUpVariants}>
-            I've also contributed to a range of other major companies and
-            startups. I worked as a core software engineer at
-            <Link
-              href={"https://userivo.co/"}
-              target="_blank"
-              className="inline-flex relative items-center peer gap-1 group mx-1 transition-all duration-400 font-bold"
-            >
-              <span className="absolute left-0 opacity-0 p-0.5 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
-                <img
-                  src="/images/work/rivo.jpeg"
-                  alt="Rivo Business Logo"
-                  className="h-6 object-cover"
-                />
-              </span>
-              <span className="group-hover:translate-x-6 transform transition-transform duration-300 text-white/80 group-hover:text-[#ec1e85]">
-                Rivo Business
-              </span>
-            </Link>
-            <span className="inline-block peer-hover:translate-x-6 whitespace-break-spaces transform transition-transform duration-300">
-              building services for crypto and fiat payment.
-            </span>
-          </motion.div>
-
-          <motion.div variants={fadeUpVariants}>
-            I've also worked with
-            <Link
-              href={"http://www.thepfs.biz/"}
-              target="_blank"
-              className="inline-flex relative items-center peer gap-1 group mx-1 transition-all duration-400 font-bold"
-            >
-              <span className="absolute left-0 opacity-0 p-0.5 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
-                <img
-                  src="/images/work/PFS.jpeg"
-                  alt="Rivo Business Logo"
-                  className="h-4 object-cover"
-                />
-              </span>
-              <span className="group-hover:translate-x-6 transform text-white/80 transition-transform duration-300 group-hover:text-[#358aa6]">
-                Precise Financial Systems,
-              </span>
-            </Link>
-            <Link
-              href={"https://www.bugatravels.com/"}
-              target="_blank"
-              className="inline-flex peer-hover:translate-x-6 relative items-center peer gap-1 group mx-1 transition-all duration-400 font-bold"
-            >
-              <span className="absolute left-0 opacity-0 p-0.5 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
-                <img
-                  src="/images/work/buga.jpeg"
-                  alt="Rivo Business Logo"
-                  className="h-4 object-cover"
-                />
-              </span>
-              <span className="group-hover:translate-x-6 transform text-white/80 transition-transform duration-300 group-hover:text-yellow-400">
-                Buga Travels.
-              </span>
-            </Link>
-          </motion.div>
-        </motion.div>
+        <AnimatedWorkDisplay />
       </motion.section>
+
+      <div className="text-center mt-25">
+        <TechMarquee />
+      </div>
     </motion.div>
   );
 }

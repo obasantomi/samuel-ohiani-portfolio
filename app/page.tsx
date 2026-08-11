@@ -11,10 +11,10 @@ export default function Home() {
           <Hero />
         </section>
         <section className="py-12.5 px-6 sm:px-10 lg:px-20 xl:px-37.5">
-          <WorkDisplay />
+          <ProjectDisplay />
         </section>
         <section className="py-12.5 px-6 sm:px-10 lg:px-20 xl:px-37.5">
-          <ProjectDisplay />
+          <WorkDisplay />
         </section>
       </div>
 

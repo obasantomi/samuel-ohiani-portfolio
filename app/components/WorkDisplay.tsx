@@ -59,7 +59,7 @@ const itemVariants = {
 
 export default function WorkDisplay() {
   const [expandedStates, setExpandedStates] = useState<boolean[]>(() =>
-    experiences.map(() => true),
+    experiences.map(() => false),
   );
   const [cursorVisible, setCursorVisible] = useState(false);
   const [useCustomCursor, setUseCustomCursor] = useState(false);

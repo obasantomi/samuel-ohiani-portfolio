@@ -71,11 +71,11 @@ export default function AnimatedBuildingStatement() {
       className="font-display text-lg md:text-xl leading-snug"
       style={{ fontFamily: "var(--font-display)", color: "var(--foreground)" }}
     >
-      <span className="font-bold text-4xl">Building&nbsp;</span>
-      <span className="text-[#4ade80] text-4xl">{current}</span>
+      <span className="font-bold text-3xl xl:text-6xl">Building&nbsp;</span>
+      <span className="text-[#9bef8f] text-3xl xl:text-6xl">{current}</span>
       <motion.span
         aria-hidden
-        className="text-[#4ade80] inline-block ml-0"
+        className="text-[#9bef8f] inline-block ml-0"
         animate={{ opacity: [1, 0.15, 1] }}
         transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
       >

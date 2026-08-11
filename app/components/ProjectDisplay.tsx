@@ -23,6 +23,15 @@ const projects = [
     date: "July 2024",
     href: "https://www.bugatravels.com/", // TODO: Replace with the actual Buga Travels project URL.
   },
+  {
+    number: "03",
+    name: "Qualiflow",
+    description:
+      "A lead qualification app that cleans CSV lead exports, normalizes inconsistent data, detects duplicates, scores buying fit and intent, and returns a ranked shortlist with explainable recommendations.",
+    technologies: "Next.js · TypeScript · Tailwind CSS · Node.js",
+    date: "2026",
+    href: "https://leads-qualification-app.vercel.app/",
+  },
 ];
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -52,7 +61,7 @@ export default function ProjectDisplay() {
             Projects
           </h2>
           <p className="text-sm uppercase tracking-[0.32em] text-(--muted)">
-            02 PROJECTS
+            03 PROJECTS
           </p>
         </div>
         <div className="mt-6 h-px w-full bg-white/10" />
