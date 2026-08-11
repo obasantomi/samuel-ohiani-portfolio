@@ -23,6 +23,16 @@ export default function AnimatedWorkDisplay() {
   const prefersReducedMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const handle = () => setIsMobile(mq.matches);
+    handle();
+    mq.addEventListener?.("change", handle);
+    return () => mq.removeEventListener?.("change", handle);
+  }, []);
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -41,6 +51,19 @@ export default function AnimatedWorkDisplay() {
     );
   }, [currentIndex]);
 
+  const positions = useMemo(() => {
+    if (isMobile) {
+      return [
+        { y: 0, opacity: 1, scale: 1, x: 0, zIndex: 40 },
+        { y: 8, opacity: 0.72, scale: 0.992, x: 2, zIndex: 30 },
+        { y: 16, opacity: 0.5, scale: 0.985, x: 4, zIndex: 20 },
+        { y: 24, opacity: 0.28, scale: 0.97, x: 6, zIndex: 10 },
+      ];
+    }
+
+    return stackPositions;
+  }, [isMobile]);
+
   return (
     <div className=" w-full md:max-w-100 mx-auto md:mx-0 relative h-100 rounded-4xl overflow-hidden">
       <img
@@ -54,24 +77,28 @@ export default function AnimatedWorkDisplay() {
       <div className="absolute left-4 right-4 bottom-20 md:left-0 z-50 md:right-auto md:max-w-85">
         {orderedHistory.map((item, position) => {
           const positionStyles =
-            stackPositions[position] ??
-            stackPositions[stackPositions.length - 1];
+            positions[position] ?? positions[positions.length - 1];
 
           return (
             <motion.div
               key={item.company}
               initial={false}
+              layout
               animate={{
                 y: positionStyles.y,
                 opacity: positionStyles.opacity,
                 scale: positionStyles.scale,
                 x: positionStyles.x,
               }}
-              transition={{
-                duration: prefersReducedMotion ? 0 : 0.72,
-                ease: easeOut,
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { type: "spring", stiffness: 110, damping: 18, mass: 0.8 }
+              }
+              style={{
+                zIndex: positionStyles.zIndex,
+                willChange: "transform, opacity",
               }}
-              style={{ zIndex: positionStyles.zIndex }}
               className="absolute w-50   overflow-hidden rounded-xl pr-3 border border-white/10 bg-[#111111]/95 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl"
             >
               <div className="flex items-center gap-3 px-4 py-2 sm:px-5">

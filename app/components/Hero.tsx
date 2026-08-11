@@ -161,15 +161,15 @@ export default function Hero() {
       </div>
 
       <motion.section
-        className="w-full flex flex-col items-center  md:flex-row md:justify-between mx-auto mt-30 gap-20"
+        className="w-full flex flex-col md:flex-row md:justify-between mx-auto mt-30 gap-20"
         variants={fadeUpVariants}
       >
-        <div className="flex flex-col max-w-95  md:justify-between gap-10 w-full">
+        <div className="flex flex-col md:max-w-95  md:justify-between gap-10 w-full">
           <div className="">
             <AnimatedBuildingStatement />
           </div>
 
-          <div className="flex md:flex-col gap-3">
+          <div className="flex flex-col gap-3">
             <motion.button
               type="button"
               onClick={async () => {
