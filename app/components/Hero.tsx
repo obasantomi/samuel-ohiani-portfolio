@@ -83,7 +83,7 @@ export default function Hero() {
               color: "var(--foreground)",
             }}
           >
-            <motion.img
+            {/* <motion.img
               src="/images/samuel.JPG"
               alt="Profile"
               className="inline-block align-middle w-8 h-8 md:w-10 md:h-10 object-cover rounded-lg mr-2"
@@ -91,7 +91,7 @@ export default function Hero() {
               onClick={() => setOpen(true)}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            />
+            /> */}
             Senior Fullstack Engineer with 3+ years of experience building
             products from idea to production.
           </h1>

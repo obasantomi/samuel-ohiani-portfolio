@@ -334,7 +334,7 @@ export default function TechMarquee() {
         />
 
         <div
-          aria-hidden={prefersReducedMotion!}
+          aria-hidden={!!prefersReducedMotion}
           className="relative"
           style={{
             WebkitMaskImage:

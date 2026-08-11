@@ -1,15 +1,7 @@
 "use client";
 
-import type { PointerEvent } from "react";
-import { useEffect, useState } from "react";
-import type { MotionValue } from "framer-motion";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-} from "framer-motion";
-import ExperienceCursor from "./ExperienceCursor";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const experiences = [
   {
@@ -45,6 +37,22 @@ const experiences = [
       "Strengthened backend integration reliability by improving endpoint accuracy, streamlining deployment workflows, and building reusable transaction flows for partner systems.",
     url: "https://www.userivo.co/",
   },
+  {
+    company: "Unified Payment Services Limited",
+    role: "Backend Developer",
+    roleLabel: "BACKEND DEVELOPER",
+    location: "Lagos Island, Lagos State, Nigeria",
+    period: "March 2024 — September 2024 · 7 mos",
+    achievements: [
+      "Actively resolved bugs in the backend architecture developed with Javascript and NodeJs, improving system stability and performance.",
+      "Implemented fixes that led to a reduction in bug reports over the course of the internship.",
+      "Conducted thorough reviews of existing systems and provided constructive feedback to team leads.",
+      "Developed proficiency in Back-End Web Development and PostgreSQL database management.",
+    ],
+    keyImpact:
+      "Enhanced backend stability and system performance through effective bug resolution and comprehensive code reviews during internship tenure.",
+    url: "https://www.storipod.com/",
+  },
 ];
 
 const sectionVariants = {
@@ -61,37 +69,7 @@ export default function WorkDisplay() {
   const [expandedStates, setExpandedStates] = useState<boolean[]>(() =>
     experiences.map(() => false),
   );
-  const [cursorVisible, setCursorVisible] = useState(false);
-  const [useCustomCursor, setUseCustomCursor] = useState(false);
-  const cursorX: MotionValue<number> = useMotionValue(0);
-  const cursorY: MotionValue<number> = useMotionValue(0);
   const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const hoverMedia = window.matchMedia("(hover: hover)");
-    const finePointerMedia = window.matchMedia("(pointer: fine)");
-    const update = () =>
-      setUseCustomCursor(hoverMedia.matches && finePointerMedia.matches);
-
-    update();
-    hoverMedia.addEventListener("change", update);
-    finePointerMedia.addEventListener("change", update);
-
-    return () => {
-      hoverMedia.removeEventListener("change", update);
-      finePointerMedia.removeEventListener("change", update);
-    };
-  }, []);
-
-  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
-    if (!useCustomCursor) return;
-    cursorX.set(event.clientX);
-    cursorY.set(event.clientY);
-  };
 
   const handleToggle = (index: number) => {
     setExpandedStates((current) =>
@@ -138,16 +116,7 @@ export default function WorkDisplay() {
           return (
             <motion.article
               key={experience.company}
-              onPointerEnter={(event) => {
-                if (useCustomCursor) {
-                  setCursorVisible(true);
-                  cursorX.set(event.clientX);
-                  cursorY.set(event.clientY);
-                }
-              }}
-              onPointerMove={handlePointerMove}
-              onPointerLeave={() => setCursorVisible(false)}
-              className={`overflow-hidden rounded-sm bg-[rgba(255,255,255,0.01)] transition-colors duration-300 ${useCustomCursor && cursorVisible ? "cursor-none" : "cursor-auto"}`}
+              className="overflow-hidden rounded-sm bg-[rgba(255,255,255,0.01)] transition-colors duration-300"
               variants={itemVariants}
               initial="hidden"
               whileInView="visible"
@@ -160,7 +129,7 @@ export default function WorkDisplay() {
               <button
                 type="button"
                 onClick={() => handleToggle(index)}
-                className={`w-full px-6 py-6 text-left transition-colors duration-300 hover:bg-[rgba(255,255,255,0.03)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${useCustomCursor && cursorVisible ? "cursor-inherit" : "cursor-pointer"}`}
+                className="w-full px-6 py-6 text-left transition-colors duration-300 hover:bg-[rgba(255,255,255,0.03)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
                 aria-expanded={isExpanded}
               >
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -236,13 +205,6 @@ export default function WorkDisplay() {
           );
         })}
       </div>
-
-      <ExperienceCursor
-        x={cursorX}
-        y={cursorY}
-        visible={cursorVisible}
-        enabled={useCustomCursor && !prefersReducedMotion}
-      />
     </section>
   );
 }
