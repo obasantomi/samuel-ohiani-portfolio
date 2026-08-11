@@ -15,24 +15,29 @@ export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   const entranceVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, filter: "blur(10px)" },
     visible: {
       opacity: 1,
-      y: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: prefersReducedMotion ? 0.55 : 1.4,
+        duration: prefersReducedMotion ? 0.55 : 1.1,
         ease: easeOut,
+        staggerChildren: prefersReducedMotion ? 0.08 : 0.14,
+        delayChildren: prefersReducedMotion ? 0.1 : 0.12,
       },
     },
   };
 
   const fadeUpVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 26, x: 12, scale: 0.97, filter: "blur(8px)" },
     visible: {
       opacity: 1,
       y: 0,
+      x: 0,
+      scale: 1,
+      filter: "blur(0px)",
       transition: {
-        duration: prefersReducedMotion ? 0.32 : 0.8,
+        duration: prefersReducedMotion ? 0.32 : 0.82,
         ease: easeOut,
       },
     },
@@ -43,15 +48,23 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: prefersReducedMotion ? 0.12 : 0.3,
-        staggerChildren: prefersReducedMotion ? 0.08 : 0.18,
+        delayChildren: prefersReducedMotion ? 0.12 : 0.18,
+        staggerChildren: prefersReducedMotion ? 0.08 : 0.14,
       },
     },
   };
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={entranceVariants}>
-      <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={entranceVariants}
+      className="overflow-hidden"
+    >
+      <motion.div
+        className="flex flex-col md:flex-row justify-between items-start gap-6"
+        variants={sectionStaggerVariants}
+      >
         <div className="max-w-120">
           <motion.div
             variants={fadeUpVariants}
@@ -142,7 +155,8 @@ export default function Hero() {
         <motion.a
           href="mailto:ohianisammy2005@gmail.com"
           className="inline-flex items-center gap-2 px-2 sm:px-3 bg-[#ffffff] text-[#050505] rounded-full text-sm h-8"
-          whileHover={{ scale: 1.05 }}
+          variants={fadeUpVariants}
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.96 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           aria-label="Discuss a project via email"
@@ -158,18 +172,24 @@ export default function Hero() {
           </svg>
           <span>DISCUSS A PROJECT</span>
         </motion.a>
-      </div>
+      </motion.div>
 
       <motion.section
         className="w-full flex flex-col md:flex-row md:justify-between mx-auto mt-30 gap-20"
-        variants={fadeUpVariants}
+        variants={sectionStaggerVariants}
       >
-        <div className="flex flex-col md:max-w-95  md:justify-between gap-10 w-full">
-          <div className="">
+        <motion.div
+          className="flex flex-col md:max-w-95 md:justify-between gap-10 w-full"
+          variants={sectionStaggerVariants}
+        >
+          <motion.div variants={fadeUpVariants}>
             <AnimatedBuildingStatement />
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-3">
+          <motion.div
+            className="flex flex-col gap-3"
+            variants={sectionStaggerVariants}
+          >
             <motion.button
               type="button"
               onClick={async () => {
@@ -184,7 +204,8 @@ export default function Hero() {
                 }
               }}
               className="inline-flex items-center  w-fit gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
-              whileHover={{ scale: 1.05 }}
+              variants={fadeUpVariants}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               aria-label="Copy email address"
@@ -206,7 +227,8 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center w-fit gap-2 px-2 sm:px-3 bg-[#141414] text-white rounded-full text-sm h-8"
-              whileHover={{ scale: 1.05 }}
+              variants={fadeUpVariants}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               aria-label="View resume"
@@ -222,10 +244,12 @@ export default function Hero() {
               </svg>
               <span>VIEW RESUME</span>
             </motion.a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <AnimatedWorkDisplay />
+        <motion.div variants={fadeUpVariants}>
+          <AnimatedWorkDisplay />
+        </motion.div>
       </motion.section>
 
       <div className="text-center mt-25">

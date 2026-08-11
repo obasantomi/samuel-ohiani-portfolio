@@ -8,26 +8,29 @@ const Footer = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const contentVariants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
     visible: {
       opacity: 1,
       y: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: prefersReducedMotion ? 0.3 : 0.65,
+        duration: prefersReducedMotion ? 0.3 : 0.75,
         ease: easeOut,
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        staggerChildren: prefersReducedMotion ? 0 : 0.1,
         delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 18, x: 10, filter: "blur(8px)" },
     visible: {
       opacity: 1,
       y: 0,
+      x: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: prefersReducedMotion ? 0.24 : 0.45,
+        duration: prefersReducedMotion ? 0.24 : 0.52,
         ease: easeOut,
       },
     },
@@ -36,11 +39,11 @@ const Footer = () => {
   return (
     <motion.div
       className="bg-[#F5F3ECE0]"
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: prefersReducedMotion ? 0.3 : 0.7,
+        duration: prefersReducedMotion ? 0.3 : 0.8,
         ease: [0.22, 1, 0.36, 1],
       }}
     >

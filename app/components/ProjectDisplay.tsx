@@ -39,16 +39,26 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 export default function ProjectDisplay() {
   const prefersReducedMotion = useReducedMotion();
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: prefersReducedMotion ? 0.25 : 0.72,
+        ease: easeOut,
+      },
+    },
+  };
+
   return (
     <div className="relative">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        transition={{
-          duration: prefersReducedMotion ? 0.25 : 0.75,
-          ease: easeOut,
-        }}
+        variants={sectionVariants}
       >
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <h2
@@ -67,12 +77,27 @@ export default function ProjectDisplay() {
         <div className="mt-6 h-px w-full bg-white/10" />
       </motion.div>
 
-      <div className="mt-10 grid gap-0 sm:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.number} {...project} />
+      <motion.div
+        className="mt-10 grid gap-0 sm:grid-cols-2 xl:grid-cols-3"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: prefersReducedMotion ? 0.04 : 0.1,
+              delayChildren: prefersReducedMotion ? 0.04 : 0.08,
+            },
+          },
+        }}
+      >
+        {projects.map((project, index) => (
+          <ProjectCard key={project.number} index={index} {...project} />
         ))}
         <GitHubExtension />
-      </div>
+      </motion.div>
     </div>
   );
 }

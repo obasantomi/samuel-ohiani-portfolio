@@ -10,6 +10,7 @@ interface ProjectCardProps {
   technologies?: string;
   date?: string;
   href?: string;
+  index?: number;
 }
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -21,6 +22,7 @@ export default function ProjectCard({
   technologies,
   date,
   href,
+  index = 0,
 }: ProjectCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const [hovered, setHovered] = useState(false);
@@ -70,11 +72,12 @@ export default function ProjectCard({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(false)}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24, x: 12, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, x: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: prefersReducedMotion ? 0.2 : 0.65,
+        duration: prefersReducedMotion ? 0.2 : 0.7,
+        delay: prefersReducedMotion ? 0 : index * 0.08,
         ease: easeOut,
       }}
       style={{ "--x": "50%", "--y": "50%" } as React.CSSProperties}

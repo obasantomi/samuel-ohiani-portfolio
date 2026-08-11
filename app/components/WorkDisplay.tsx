@@ -57,13 +57,13 @@ const experiences = [
 ];
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 18, x: 10, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, x: 0, filter: "blur(0px)" },
 };
 
 export default function WorkDisplay() {
@@ -123,7 +123,8 @@ export default function WorkDisplay() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               transition={{
-                duration: prefersReducedMotion ? 0.2 : 0.55,
+                duration: prefersReducedMotion ? 0.2 : 0.6,
+                delay: prefersReducedMotion ? 0 : index * 0.08,
                 ease: "easeOut",
               }}
             >
